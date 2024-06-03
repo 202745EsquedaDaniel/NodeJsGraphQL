@@ -5,9 +5,11 @@ const cors = require('cors');
 const routerApi = require('./routes');
 const { checkApiKey } = require('./middlewares/auth.handler');
 
+const useGraphql = require("./graphQL")
+
 const { logErrors, errorHandler, boomErrorHandler, ormErrorHandler } = require('./middlewares/error.handler');
 
-const createApp = () => {
+const createApp = async () => {
   const app = express();
 
   app.use(express.json());
@@ -24,6 +26,7 @@ const createApp = () => {
   });
 
   routerApi(app);
+  await useGraphql(app)
 
   app.use(logErrors);
   app.use(ormErrorHandler);
