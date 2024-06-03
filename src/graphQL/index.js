@@ -5,6 +5,11 @@ const typeDefs = `
   type Query {
     hello: String
     getPerson(name: String, age: Int): String
+    getInt(age: Int): Int
+    getFloat(price: Float): Float
+    getString: String
+    getBoolean: Boolean
+    getID: ID
   }
 `;
 
@@ -14,7 +19,11 @@ const typeDefs = `
 const resolvers = {
   Query: {
     hello: () => "Hello, world!",
-    getPerson: (_, args) => `hello, my name is ${args.name}, I am ${args.age}`
+    getPerson: (_, args) => `hello, my name is ${args.name}, I am ${args.age}`,
+    getInt: (_, args) => args.age,
+    getFloat: (_, args) => args.price,
+    getBoolean: () => true,
+    getID: () => "123"
   }
 }
 
