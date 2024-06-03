@@ -4,12 +4,17 @@ const { ApolloServerPluginLandingPageGraphQLPlayground} = require("apollo-server
 const typeDefs = `
   type Query {
     hello: String
+    getPerson(name: String, age: Int): String
   }
 `;
 
+//Get = Query
+//Post, Delete and Patch = Mutation
+
 const resolvers = {
   Query: {
-    hello: () => "Hello, world!"
+    hello: () => "Hello, world!",
+    getPerson: (_, args) => `hello, my name is ${args.name}, I am ${args.age}`
   }
 }
 
