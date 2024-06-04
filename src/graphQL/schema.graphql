@@ -1,0 +1,27 @@
+  type Query {
+    hello: String!
+    getPerson(name: String, age: Int): String
+    getInt(age: Int): Int
+    getFloat(price: Float): Float
+    getString: String
+    getBoolean: Boolean
+    getID: ID
+    getNumbers(numbers: [Int!]!): [Int]
+    getProduct: Product
+  }
+
+  type Product {
+    id: ID!,
+    name: String!,
+    price: Float!,
+    description: String!,
+    image: String!,
+    createdAt: String!
+  }
+# El agregar el signo de exclamación al final de cada tipo de dato significa que no pueede ser nulo
+#Get = Query
+#Post, Delete and Patch = Mutation
+
+#Lists
+# [String] = List of strings
+# [Int] = List of integers
