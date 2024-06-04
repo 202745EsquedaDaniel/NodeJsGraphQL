@@ -12,6 +12,10 @@
     allProducts: [Product!]!
   }
 
+  type Mutation {
+   addProduct(dto: CreateProductDto!): Product!
+  }
+
   type Product {
     id: ID!,
     name: String!,
@@ -20,6 +24,15 @@
     image: String!,
     createdAt: String!
   }
+
+input CreateProductDto {
+    name: String!,
+    price: Float!,
+    description: String!,
+    image: String!,
+    categoryId: ID!
+}
+
 # El agregar el signo de exclamación al final de cada tipo de dato significa que no pueede ser nulo
 #Get = Query
 #Post, Delete and Patch = Mutation
