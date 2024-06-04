@@ -1,16 +1,14 @@
+const ProductsService = require("../services/product.service")
+const service = new ProductsService();
+
 const getProduct = (_, { id }) => {
-  return {
-    id,
-    name: "Product 1",
-    price: 123.45,
-    description: "This is a product",
-    image: "https://via.placeholder.com/150",
-    createdAt: new Date().toISOString()
-  }
+ const product = service.findOne(id)
+ return product
 }
 
 const getProducts = () => {
-  return [];
+  const products = service.find({})
+  return products
 }
 
 module.exports = { getProduct, getProducts}
