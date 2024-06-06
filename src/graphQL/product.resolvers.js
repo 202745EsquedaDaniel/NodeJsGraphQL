@@ -16,4 +16,14 @@ const addProduct = async(_, { dto}) => {
   return newProduct
 }
 
-module.exports = { getProduct, getProducts, addProduct}
+const updateProduct = async(_, {id, dto}) => {
+  const updatedProduct = await service.update(id, dto)
+  return updatedProduct
+}
+
+const deleteProduct = async(_, { id }) => {
+  await service.delete(id, dto)
+  return id
+}
+
+module.exports = { getProduct, getProducts, addProduct, updateProduct, deleteProduct}

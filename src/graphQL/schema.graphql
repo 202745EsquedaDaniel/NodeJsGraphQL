@@ -14,7 +14,11 @@
 
   type Mutation {
    addProduct(dto: CreateProductDto!): Product!
+   updateProduct(id: ID!, dto: UpdateProductDto!): Product!
+   deleteProduct(id: ID!): Product!
   }
+
+  # El : significa que retirnara un product
 
   type Product {
     id: ID!,
@@ -32,6 +36,15 @@ input CreateProductDto {
     image: String!,
     categoryId: ID!
 }
+
+input UpdateProductDto {
+    name: String,
+    price: Float,
+    description: String,
+    image: String,
+    categoryId: ID
+}
+
 
 # El agregar el signo de exclamación al final de cada tipo de dato significa que no pueede ser nulo
 #Get = Query
