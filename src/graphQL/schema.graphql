@@ -13,9 +13,9 @@
   }
 
   type Mutation {
-   addProduct(dto: CreateProductDto!): Product!
-   updateProduct(id: ID!, dto: UpdateProductDto!): Product!
-   deleteProduct(id: ID!): Product!
+   addProduct(dto: CreateProductDto!): Product
+   updateProduct(id: ID!, dto: UpdateProductDto!): Product
+   deleteProduct(id: ID!): ID
   }
 
   # El : significa que retirnara un product
@@ -26,7 +26,15 @@
     price: Float!,
     description: String!,
     image: String!,
-    createdAt: String!
+    createdAt: String!,
+    categoryId: ID!,
+    category: Category!
+  }
+
+  type Category {
+    id: ID!,
+    name: String!,
+    image: String!,
   }
 
 input CreateProductDto {
