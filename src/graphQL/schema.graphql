@@ -17,6 +17,7 @@
    addProduct(dto: CreateProductDto!): Product
    updateProduct(id: ID!, dto: UpdateProductDto!): Product
    deleteProduct(id: ID!): ID
+   addCategory(dto: CreateCategoryDto!): Category
   }
 
   # El : significa que retirnara un product
@@ -64,6 +65,11 @@ type User{
   email: String!,
   role: String!,
   createdAt: String!
+}
+
+input CreateCategoryDto {
+  name: String!,
+  image: String!
 }
 
 
