@@ -26,4 +26,9 @@ const deleteProduct = async(_, { id }) => {
   return id
 }
 
-module.exports = { getProduct, getProducts, addProduct, updateProduct, deleteProduct}
+const getProductsByCategory = (_) => {
+  const id = _.dataValues.id
+  return service.getByCategory(id)
+}
+
+module.exports = { getProduct, getProducts, addProduct, updateProduct, deleteProduct, getProductsByCategory}

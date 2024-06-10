@@ -10,6 +10,7 @@
     # products
     product(id: ID!): Product
     allProducts: [Product!]!
+    category(id: ID!): Category
   }
 
   type Mutation {
@@ -37,6 +38,7 @@
     id: ID!,
     name: String!,
     image: String!,
+    products: [Product!]!
   }
 
 input CreateProductDto {
