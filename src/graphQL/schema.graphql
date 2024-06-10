@@ -13,7 +13,7 @@
   }
 
   type Mutation {
-   login(email: String!, password: String!): AuthResponse
+   login(email: EmailAddress!, password: String!): AuthResponse
    addProduct(dto: CreateProductDto!): Product
    updateProduct(id: ID!, dto: UpdateProductDto!): Product
    deleteProduct(id: ID!): ID
@@ -68,10 +68,11 @@ type User{
 }
 
 input CreateCategoryDto {
-  name: String!,
-  image: String!
+  name: CategoryNameType!,
+  image: URL!
 }
 
+scalar CategoryNameType
 
 # El agregar el signo de exclamación al final de cada tipo de dato significa que no pueede ser nulo
 #Get = Query

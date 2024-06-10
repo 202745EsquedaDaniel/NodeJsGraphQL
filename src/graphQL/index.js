@@ -3,14 +3,23 @@ const { ApolloServerPluginLandingPageGraphQLPlayground} = require("apollo-server
 const { loadFiles} = require("@graphql-tools/load-files") //instalar graphql-tools con npm install @graphql-tools/load-files
 const { buildContext } = require("graphql-passport")
 
+const { typeDefs: scalarsTypeDefs, resolvers: scalarsResolver} = require("graphql-scalars")
+
 const resolvers = require("./resolvers")
 
 
-
 const useGraphql = async (app) => {
-  const server = new ApolloServer({
-    typeDefs: await loadFiles("./src/**/*.graphql"),
+  const typeDefs = [
+    ...await loadFiles("./src/**/*.graphql"),
+    scalarsTypeDefs
+  ]
+  const allResolvers = [
     resolvers,
+    scalarsResolver
+  ]
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers: allResolvers,
     context: ({req, res}) => buildContext({req, res}),
     playground: true,
     plugins : [
